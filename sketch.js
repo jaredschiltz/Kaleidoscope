@@ -1,6 +1,5 @@
 let img
 let shape
-let backgroundImage;
 let maskedImage;
 let theta = 0;
 const SIZE = 800;
@@ -18,19 +17,7 @@ function setup() {
   shapeWidth = SIZE_DIV2;
   shapeHeight = SIZE / 2 * Math.tan(PI / 8);
   shape = createGraphics(shapeWidth, shapeHeight);
-  backgroundImage = createImage(SIZE, SIZE)
-  let backGroundColor = color(0, 0, 0)
-  backgroundImage.loadPixels();
-  let d = pixelDensity();
-  let pixelDim = 4 * SIZE * SIZE * d;
-  for (let i = 0; i < pixelDim; i += 4) {
-    backgroundImage.pixels[i] = red(backGroundColor);
-    backgroundImage.pixels[i + 1] = green(backGroundColor);
-    backgroundImage.pixels[i + 2] = blue(backGroundColor);
-    backgroundImage.pixels[i + 3] = alpha(backGroundColor);
-  }
-  backgroundImage.updatePixels();
-  maskedImage = createImage(shapeWidth, shapeHeight)
+  maskedImage = createImage(int(shapeWidth), int(shapeHeight))
 }
 
 function draw() {
@@ -60,7 +47,8 @@ function draw() {
   // Use the shape as a mask
   maskedImage.mask(shape)
 
-  image(backgroundImage, 0, 0)
+  fill(0);
+  rect(0,0,SIZE,SIZE)
 
   push()
   translate(SIZE / 2, SIZE / 2)
