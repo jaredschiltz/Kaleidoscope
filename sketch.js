@@ -41,7 +41,7 @@ function draw() {
   rotate(theta)
   image(img, -SIZE_DIV2, -SIZE_DIV2)
   pop();
-
+  maskedImage.loadPixels()
   for (let r = 0; r < shapeHeight; r++) {
     for (let c = 0; c < shapeWidth; c++) {
       maskedImage.set(c, r, get(c, r));
